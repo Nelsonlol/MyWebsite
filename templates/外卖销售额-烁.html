@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <!DOCTYPE html>
+ <html>
+   <head>
+ <meta charset="UTF-8">
+ <title></title>
+ <script src="echarts.js"></script>
+ </head>
+   <body>
+ <div id="main" style="width: 1000px;height: 800px;"></div>
+   <script type="text/javascript">
+ var myChart = echarts.init(document.getElementById("main"));
+   // 计算百分比数据
+ var rec = [0.32, 0.47, 0.62, 0.73, 0.80, 0.87, 0.93, 0.95, 0.98, 1];
+ var res = [];
+ for(var i in rec){
+ res.push(rec[i] * 100);
+ };
+   // 获取X轴数据
+ var data_xaxis = ['小眷村奶茶',
+ '涓豆腐奶茶',
+ '甲仙芋头奶茶',
+ '草莓小确幸',
+ '三囍奶茶',
+ '龙涎鲜奶茶',
+ '厝内水果茶',
+ '沁心蜜桃茶',
+ '恋上海柠威',
+ '芒果小清新'];
+   // 获取左侧Y轴数据(分钟)
+ var data_yaxis_left = [28024, 13701, 12750, 9756, 6468,
+ 5577, 5250, 2160, 2145, 2100];
+     option = {
+ title: {
+ text: '外卖奶茶销售额',
+ left: 'center'
+ },
+ tooltip: {
+ trigger: 'axis',
+ axisPointer: {
+ type: 'cross',
+ label: {
+ backgroundColor: '#283b56'
+ }
+ }
+ },
+ legend: {
+ left: 'left',
+ data: ['销售额', '销售额占比']
+ },
+ dataZoom: {
+ show: false,
+ start: 0,
+ end: 100
+ },
+ xAxis: [{
+ type: 'category',
+ boundaryGap: true,
+ data: data_xaxis,
+ axisLabel:{
+ rotate: 45,
+ interval: 0,
+ margin:5
+ }
+ }, {
+ type: 'category',
+ boundaryGap: true,
+ data: []
+ }],
+ yAxis: [{
+ type: 'value',
+ scale: true,
+ name: '销售额',
+ max: 30000,
+ min: 0,
+ boundaryGap: [0.2, 0.2],
+ }, {
+ axisLabel: {
+ formatter: function(value){
+ return value + '%';
+ }
+ },
+ type: 'value',
+ scale: true,
+ name: '销售额占比',
+ max: 100,
+ min: 0,
+ boundaryGap: [0.2, 0.2]
+ }],
+ series: [{
+ name: '销售额',
+ type: 'bar',
+ xAxisIndex: 0,
+ yAxisIndex: 0,
+ data: data_yaxis_left
+ }, {
+ name: '销售额占比',
+ data: res,
+ type: 'line',
+ yAxisIndex: 1,
+ smooth: true
+ }]
+   };
+   myChart.setOption(option);
+ </script>
+
+</body>
+</html>

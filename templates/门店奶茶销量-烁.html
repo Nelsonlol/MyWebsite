@@ -1,0 +1,107 @@
+<!--
+    THIS EXAMPLE WAS DOWNLOADED FROM https://echarts.apache.org/examples/zh/editor.html?c=pie-roseType-simple
+-->
+<!DOCTYPE html>
+<html style="height: 100%">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body style="height: 100%; margin: 0">
+        <div id="container" style="height: 100%"></div>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+        <!-- Uncomment this line if you want to dataTool extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/extension/dataTool.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use gl extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to echarts-stat extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+        -->
+        <!-- Uncomment this line if you want to use map
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/map/js/china.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/map/js/world.js"></script>
+        -->
+        <!-- Uncomment these two lines if you want to use bmap extension
+        <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=<Your Key Here>"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@{{version}}/dist/extension/bmap.min.js"></script>
+        -->
+
+        <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+
+var option;
+
+
+
+            option = {
+              textStyle: {
+                  fontSize: 16,   // 调节字体大小
+                  
+              },
+              title : {
+                  text: '门店奶茶销量',       // 主标题名称
+                  subtext: '',    // 副标题名称
+                  x:'center'      // 标题的位置
+              },
+              tooltip : {
+                  trigger: 'item',
+                  formatter: "{a} <br/>{b} : {c} ({d}%)"
+              },
+              legend: {
+                  orient: 'vertical',         // 标签名称垂直排列
+                  x: 'right',                 // 标签的位置
+                  data:['小眷村奶茶','涓豆腐奶茶','甲仙芋头奶茶','三囍奶茶','龙涎鲜奶茶','草莓小确幸','厝内水果茶','沁心蜜桃茶']
+              },                              // 标签变量名称
+              toolbox: {
+                  show : true,
+                  feature : {
+                      mark : {show: true},
+                      dataView : {show: true, readOnly: false},
+                      magicType : {
+                          show: true,
+                          type: ['pie', 'funnel']
+                      },
+                      restore : {show: true},
+                      saveAsImage : {show: true}          // 保存图片
+                  }
+              },
+              calculable : true,
+              series : [
+                  {
+                      name:'面积模式',                    // 图表名称
+                      type:'pie',                         // 图表类型
+                      radius : [60, 300],                 // 图表内外半径大小
+                      center : ['50%', '50%'],            // 图表位置
+                      roseType : 'area',
+                      label: {
+                          normal: {
+                              show: true,
+                              formatter: '{b}({d}%)'      // 显示百分比
+                          }
+                      },
+                      data: [
+                                { value: 1491, name: '小眷村奶茶' },
+                                { value: 790, name: '涓豆腐奶茶' },
+                                { value: 544, name: '甲仙芋頭奶茶' },
+                                { value: 390, name: '三囍奶茶' },
+                                { value: 279, name: '龙涎鲜奶茶' },
+                                { value: 254, name: '草莓小确幸' },
+                                { value: 222, name: '厝内水果茶' },
+                                { value: 111, name: '沁心蜜桃茶' }
+                                ]
+                  }
+              ]
+          };
+
+if (option && typeof option === 'object') {
+    myChart.setOption(option);
+}
+
+        </script>
+    </body>
+</html>
+    
